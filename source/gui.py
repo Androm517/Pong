@@ -9,10 +9,12 @@ class Controller:
     def __init__(self, master):
         self.play = False
         self.master = master
-        self.listeners = []
+        self.listener = None
+        self.objects = []
 
     def addListener(self, listener):
-        self.listeners.append(listener)
+        self.listener = listener
+        self.objects = [listener.create_oval(50, 25, 50 + 50, 25 + 50, fill="blue")]
 
     def start(self):
         self.play = True
@@ -37,7 +39,7 @@ class PongArea(tk.Canvas):
     """
     def __init__(self, master, **kwargs):
         super(PongArea, self).__init__(master, **kwargs)
-        self.objects = [self.create_oval(50, 25, 50 + 50, 25 + 50, fill="blue")]
+
 
 
 class Menu(tk.Frame):
