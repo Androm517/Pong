@@ -4,7 +4,9 @@ import tkinter as tk
 class Controller:
     """
     Den här klassen skickar information mellan de olika widgetarna. Den innehåller också
-    gameLoop som styr rörelser i PongArea.
+    gameLoop som styr rörelser i PongArea. Den här klassen hämtar information från en
+    widget genom att definiera en funktion och den skickar information till en widget
+    som adderat sig som en listener.
     """
     def __init__(self, master):
         self.play = False
