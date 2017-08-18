@@ -9,6 +9,10 @@ class Controller:
     def __init__(self, master):
         self.play = False
         self.master = master
+        self.listeners = []
+
+    def addListener(self, listener):
+        self.listeners.append(listener)
 
     def start(self):
         self.play = True
