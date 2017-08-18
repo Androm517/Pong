@@ -2,6 +2,10 @@ import tkinter as tk
 
 
 class Controller:
+    """
+    Den här klassen skickar information mellan de olika widgetarna. Den innehåller också
+    gameLoop som styr rörelser i PongArea.
+    """
     def __init__(self, master):
         self.play = False
         self.master = master
@@ -24,12 +28,18 @@ class Controller:
 
 
 class PongArea(tk.Canvas):
+    """
+    Rita paddlar, boll och spelyta.
+    """
     def __init__(self, master, **kwargs):
         super(PongArea, self).__init__(master, **kwargs)
         self.objects = [self.create_oval(50, 25, 50 + 50, 25 + 50, fill="blue")]
 
 
 class Menu(tk.Frame):
+    """
+    Meny med knappar start, stop, paus, och restart.
+    """
     def __init__(self, master, stopFunc=None, startFunc=None, pausFunc=None, restartFunc=None, **kwargs):
         super(Menu, self).__init__(master, **kwargs)
         self.buttons = [Stop(self, text='Stop', command=stopFunc), Start(self, text='Start', command=startFunc) \
@@ -39,6 +49,9 @@ class Menu(tk.Frame):
 
 
 class Button(tk.Button):
+    """
+    En knapp. Alla knapp objekt ärver den här klassen.
+    """
     def __init__(self, master, **kwargs):
         super(Button, self).__init__(master, **kwargs)
 
