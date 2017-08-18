@@ -6,6 +6,7 @@ import tkinter as tk
 class PongArea(tk.Canvas):
     def __init__(self, master, **kwargs):
         super(PongArea, self).__init__(master, **kwargs)
+        self.objects = [self.create_oval(50, 25, 50 + 50, 25 + 50, fill="blue")]
 
 
 class Menu(tk.Frame):
