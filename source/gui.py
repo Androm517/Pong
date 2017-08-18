@@ -3,15 +3,16 @@ import tkinter as tk
 
 
 
-class PongArea:
-    pass
+class PongArea(tk.Canvas):
+    def __init__(self, master, **kwargs):
+        super(PongArea, self).__init__(master, **kwargs)
 
 
 class Menu(tk.Frame):
     def __init__(self, master, **kwargs):
         super(Menu, self).__init__(master, **kwargs)
-        self.buttons = [Stop(master, text='Stop', command=None), Start(master, text='Start', command=None) \
-                        , Paus(master, text='Paus', command=None), Restart(master, text='Restart', command=None)]
+        self.buttons = [Stop(self, text='Stop', command=None), Start(self, text='Start', command=None) \
+                        , Paus(self, text='Paus', command=None), Restart(self, text='Restart', command=None)]
         for button in self.buttons:
             button.pack()
 
@@ -43,6 +44,9 @@ class Restart(Button):
 
 top = tk.Tk()
 # lägg till frames här
+pongArea = PongArea(top, width=300, height=100, bg='white')
 menu = Menu(top)
+pongArea.pack()
+menu.pack()
 
 top.mainloop()
