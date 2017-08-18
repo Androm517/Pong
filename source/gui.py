@@ -1,6 +1,26 @@
 import tkinter as tk
 
 
+class Controller:
+    def __init__(self, master):
+        self.play = False
+        self.master = master
+
+    def start(self):
+        self.play = True
+        self.gameLoop()
+
+    def gameLoop(self):
+        if self.play:
+            print("hello hello hello")
+            self.master.after(1000, self.gameLoop)
+
+    def stop(self):
+        print("sett self.play = False")
+        self.play = False
+
+    def printPlay(self):
+        print("self.play", self.play)
 
 
 class PongArea(tk.Canvas):
@@ -10,10 +30,10 @@ class PongArea(tk.Canvas):
 
 
 class Menu(tk.Frame):
-    def __init__(self, master, **kwargs):
+    def __init__(self, master, stopFunc=None, startFunc=None, pausFunc=None, restartFunc=None, **kwargs):
         super(Menu, self).__init__(master, **kwargs)
-        self.buttons = [Stop(self, text='Stop', command=None), Start(self, text='Start', command=None) \
-                        , Paus(self, text='Paus', command=None), Restart(self, text='Restart', command=None)]
+        self.buttons = [Stop(self, text='Stop', command=stopFunc), Start(self, text='Start', command=startFunc) \
+                        , Paus(self, text='Paus', command=pausFunc), Restart(self, text='Restart', command=restartFunc)]
         for button in self.buttons:
             button.pack()
 
