@@ -1,6 +1,12 @@
 from source.game import *
+from source.gui import *
 
 
-player1 = Ball()
-player2 = Ball()
-board = PongBoard(player1, player2)
+top = tk.Tk()
+# lägg till frames här
+pongArea = PongArea(top, width=300, height=100, bg='white')
+menu = Menu(top)
+pongArea.pack()
+menu.pack()
+
+top.mainloop()
