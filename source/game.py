@@ -29,7 +29,7 @@ class Paddle(Box):
     Paddel till pong brädet.
     """
     def __init__(self):
-        super(Ball, self).__init__()
+        super(Paddle, self).__init__()
 
 
 class PongBoard:
