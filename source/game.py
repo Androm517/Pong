@@ -10,7 +10,13 @@ class Box:
     def move(self, dt):
         self.position += self.velocity * dt
 
+
 class Ball(Box):
+    def __init__(self):
+        super(Ball, self).__init__()
+
+
+class Paddle(Box):
     def __init__(self):
         super(Ball, self).__init__()
 
