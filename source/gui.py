@@ -35,7 +35,7 @@ class Controller:
 
 class PongArea(tk.Canvas):
     """
-    Rita paddlar, boll och spelyta.
+    Representation av spelytan. Här ritas paddlar och boll.
     """
     def __init__(self, master, **kwargs):
         super(PongArea, self).__init__(master, **kwargs)
