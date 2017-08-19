@@ -5,8 +5,8 @@ class Controller:
     """
     Den här klassen skickar information mellan de olika widgetarna. Den innehåller också
     gameLoop som styr rörelser i PongArea. Den här klassen hämtar information från en
-    widget genom att definiera en funktion och den skickar information till en widget
-    som adderat sig som en listener.
+    widget genom att definiera en funktion som tilldelas widgeten och den skickar information
+    till en widget som adderat sig som en listener av sin typ.
     """
     def __init__(self, master):
         self.play = False
@@ -14,9 +14,9 @@ class Controller:
         self.listener = None
         self.objects = []
 
-    def addListener(self, listener):
-        self.listener = listener
-        self.objects = [listener.create_oval(50, 25, 50 + 50, 25 + 50, fill="blue")]
+    def addListenerPongArea(self, pongArea):
+        self.listener = pongArea
+        self.objects = [pongArea.create_oval(50, 25, 50 + 50, 25 + 50, fill="blue")]
 
     def start(self):
         self.play = True
@@ -46,7 +46,7 @@ class PongArea(tk.Canvas):
 
 class Menu(tk.Frame):
     """
-    Meny med knappar start, stop, paus, och restart.
+    Meny med knapparna start, stop, paus, och restart.
     """
     def __init__(self, master, stopFunc=None, startFunc=None, pausFunc=None, restartFunc=None, **kwargs):
         super(Menu, self).__init__(master, **kwargs)
