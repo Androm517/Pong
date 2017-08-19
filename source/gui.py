@@ -50,8 +50,8 @@ class Menu(tk.Frame):
     """
     def __init__(self, root, stopFunc=None, startFunc=None, pausFunc=None, restartFunc=None, **kwargs):
         super(Menu, self).__init__(root, **kwargs)
-        self.buttons = [Stop(self, text='Stop', command=stopFunc), Start(self, text='Start', command=startFunc) \
-                        , Paus(self, text='Paus', command=pausFunc), Restart(self, text='Restart', command=restartFunc)]
+        self.buttons = [Stop(self, text='Stop', command=stopFunc), Start(self, text='Start', command=startFunc),
+                        Paus(self, text='Paus', command=pausFunc), Restart(self, text='Restart', command=restartFunc)]
         for button in self.buttons:
             button.pack()
 
