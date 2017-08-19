@@ -43,7 +43,6 @@ class PongArea(tk.Canvas):
         super(PongArea, self).__init__(root, **kwargs)
 
 
-
 class Menu(tk.Frame):
     """
     Meny med knapparna start, stop, paus, och restart.
