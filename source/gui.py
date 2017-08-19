@@ -8,9 +8,9 @@ class Controller:
     widget genom att definiera en funktion som tilldelas widgeten och den skickar information
     till en widget som adderat sig som en listener av sin typ.
     """
-    def __init__(self, master):
+    def __init__(self, root):
         self.play = False
-        self.master = master
+        self.root = root
         self.listener = None
         self.objects = []
 
@@ -25,7 +25,7 @@ class Controller:
     def gameLoop(self):
         if self.play:
             print("hello hello hello")
-            self.master.after(1000, self.gameLoop)
+            self.root.after(1000, self.gameLoop)
 
     def stop(self):
         print("sett self.play = False")
@@ -39,8 +39,8 @@ class PongArea(tk.Canvas):
     """
     Representation av spelytan. Här ritas paddlar och boll.
     """
-    def __init__(self, master, **kwargs):
-        super(PongArea, self).__init__(master, **kwargs)
+    def __init__(self, root, **kwargs):
+        super(PongArea, self).__init__(root, **kwargs)
 
 
 
@@ -48,8 +48,8 @@ class Menu(tk.Frame):
     """
     Meny med knapparna start, stop, paus, och restart.
     """
-    def __init__(self, master, stopFunc=None, startFunc=None, pausFunc=None, restartFunc=None, **kwargs):
-        super(Menu, self).__init__(master, **kwargs)
+    def __init__(self, root, stopFunc=None, startFunc=None, pausFunc=None, restartFunc=None, **kwargs):
+        super(Menu, self).__init__(root, **kwargs)
         self.buttons = [Stop(self, text='Stop', command=stopFunc), Start(self, text='Start', command=startFunc) \
                         , Paus(self, text='Paus', command=pausFunc), Restart(self, text='Restart', command=restartFunc)]
         for button in self.buttons:
@@ -60,25 +60,25 @@ class Button(tk.Button):
     """
     En knapp. Alla knapp objekt ärver den här klassen.
     """
-    def __init__(self, master, **kwargs):
-        super(Button, self).__init__(master, **kwargs)
+    def __init__(self, root, **kwargs):
+        super(Button, self).__init__(root, **kwargs)
 
 
 class Start(Button):
-    def __init__(self, master, **kwargs):
-        super(Start, self).__init__(master, **kwargs)
+    def __init__(self, root, **kwargs):
+        super(Start, self).__init__(root, **kwargs)
 
 
 class Stop(Button):
-    def __init__(self, master, **kwargs):
-        super(Stop, self).__init__(master, **kwargs)
+    def __init__(self, root, **kwargs):
+        super(Stop, self).__init__(root, **kwargs)
 
 
 class Paus(Button):
-    def __init__(self, master, **kwargs):
-        super(Paus, self).__init__(master, **kwargs)
+    def __init__(self, root, **kwargs):
+        super(Paus, self).__init__(root, **kwargs)
 
 
 class Restart(Button):
-    def __init__(self, master, **kwargs):
-        super(Restart, self).__init__(master, **kwargs)
+    def __init__(self, root, **kwargs):
+        super(Restart, self).__init__(root, **kwargs)
