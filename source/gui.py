@@ -9,6 +9,7 @@ class Controller:
     till en widget som adderat sig som en listener av sin typ.
     """
     def __init__(self, gameLogic=None):
+        self.gameLogic = gameLogic
         self.play = False
         self.root = tk.Tk()
         self.pongArea = PongArea(self.root, width=300, height=100, bg='white')
