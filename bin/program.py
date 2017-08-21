@@ -1,6 +1,6 @@
 from source.gui import *
 
 
-controller = Controller()
+controller = PongLogicGuiController()
 controller.mainloop()
 

@@ -1,7 +1,7 @@
 import tkinter as tk
 
 
-class Controller:
+class PongLogicGuiController:
     """
     Den här klassen skickar information mellan de olika widgetarna. Den innehåller också
     gameLoop som styr rörelser i PongArea. Den här klassen hämtar information från en
