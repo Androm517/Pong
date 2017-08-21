@@ -14,18 +14,15 @@ class Controller:
         self.root = tk.Tk()
         self.pongArea = PongArea(self.root, width=300, height=100, bg='white')
         self.pongAreaObjects = self.pongArea.objects
-        self.menu = Menu(self.root, self.stop, self.start, self.printPlay)
+        functions = [self.stop, self.start, self.printPlay, None]
+        self.menu = Menu(self.root, functions)
         self.pongArea.pack(side=tk.LEFT)
         self.menu.pack()
 
+    # menu functions
     def start(self):
         self.play = True
         self.gameLoop()
-
-    def gameLoop(self):
-        if self.play:
-            print("hello hello hello")
-            self.root.after(1000, self.gameLoop)
 
     def stop(self):
         print("sett self.play = False")
@@ -33,6 +30,13 @@ class Controller:
 
     def printPlay(self):
         print("self.play", self.play)
+
+    # ----
+
+    def gameLoop(self):
+        if self.play:
+            print("hello hello hello")
+            self.root.after(1000, self.gameLoop)
 
     def mainloop(self):
         self.root.mainloop()
@@ -52,10 +56,10 @@ class Menu(tk.Frame):
     """
     Meny med knapparna start, stop, paus, och restart.
     """
-    def __init__(self, root, stopFunc=None, startFunc=None, pausFunc=None, restartFunc=None, **kwargs):
+    def __init__(self, root, funcList=[None, None, None, None], **kwargs):
         super(Menu, self).__init__(root, **kwargs)
-        self.buttons = [Stop(self, text='Stop', command=stopFunc), Start(self, text='Start', command=startFunc),
-                        Paus(self, text='Paus', command=pausFunc), Restart(self, text='Restart', command=restartFunc)]
+        self.buttons = [Stop(self, text='Stop', command=funcList[0]), Start(self, text='Start', command=funcList[1]),
+                        Paus(self, text='Paus', command=funcList[2]), Restart(self, text='Restart', command=funcList[3])]
         for button in self.buttons:
             button.pack()
 
