@@ -8,15 +8,14 @@ class Controller:
     widget genom att definiera en funktion som tilldelas widgeten och den skickar information
     till en widget som adderat sig som en listener av sin typ.
     """
-    def __init__(self, root):
+    def __init__(self, gameLogic=None):
         self.play = False
-        self.root = root
-        self.listener = None
-        self.objects = []
-
-    def addListenerPongArea(self, pongArea):
-        self.listener = pongArea
-        self.objects = [pongArea.create_oval(50, 25, 50 + 50, 25 + 50, fill="blue")]
+        self.root = tk.Tk()
+        self.pongArea = PongArea(self.root, width=300, height=100, bg='white')
+        self.pongAreaObjects = self.pongArea.objects
+        self.menu = Menu(self.root, self.stop, self.start, self.printPlay)
+        self.pongArea.pack(side=tk.LEFT)
+        self.menu.pack()
 
     def start(self):
         self.play = True
@@ -34,6 +33,9 @@ class Controller:
     def printPlay(self):
         print("self.play", self.play)
 
+    def mainloop(self):
+        self.root.mainloop()
+
 
 class PongArea(tk.Canvas):
     """
@@ -41,6 +43,8 @@ class PongArea(tk.Canvas):
     """
     def __init__(self, root, **kwargs):
         super(PongArea, self).__init__(root, **kwargs)
+        self.objects = []
+        self.objects.append(self.create_oval(50, 25, 50 + 50, 25 + 50, fill="blue"))
 
 
 class Menu(tk.Frame):
