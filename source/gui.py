@@ -14,7 +14,7 @@ class Controller:
         self.root = tk.Tk()
         self.pongArea = PongArea(self.root, width=300, height=100, bg='white')
         self.pongAreaObjects = self.pongArea.objects
-        functions = [self.stop, self.start, self.printPlay, None]
+        functions = [self.stop, self.start, self.paus, self.restart]
         self.menu = Menu(self.root, functions)
         self.pongArea.pack(side=tk.LEFT)
         self.menu.pack()
@@ -28,8 +28,11 @@ class Controller:
         print("sett self.play = False")
         self.play = False
 
-    def printPlay(self):
+    def paus(self):
         print("self.play", self.play)
+
+    def restart(self):
+        pass
 
     # ----
 
