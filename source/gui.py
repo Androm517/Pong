@@ -56,8 +56,10 @@ class Menu(tk.Frame):
     """
     Meny med knapparna start, stop, paus, och restart.
     """
-    def __init__(self, root, funcList=[None, None, None, None], **kwargs):
+    def __init__(self, root, funcList=None, **kwargs):
         super(Menu, self).__init__(root, **kwargs)
+        if funcList is None:
+            funclist = [None, None, None, None]
         self.buttons = [Stop(self, text='Stop', command=funcList[0]), Start(self, text='Start', command=funcList[1]),
                         Paus(self, text='Paus', command=funcList[2]), Restart(self, text='Restart', command=funcList[3])]
         for button in self.buttons:
